@@ -1,0 +1,87 @@
+@mixin respond($breakpoint) {
+	$query: map-get($breakpoints, $breakpoint);
+	// scss error
+	@if not $query {
+		@error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+	}
+	//校验了$query合法性
+	@media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+		@content;
+	}
+}
+
+// unquote($query)：删除字符串中的引号；
+// quote($query)：给字符串添加引号。
+// inspect($query) Maps不能转换为纯CSS。作为变量的值或参数传递给CSS函数将会导致错误。
+//                 使用inspect($query) 函数以产生输出字符串。
+
+@mixin btnr {
+	color: #ffffff;
+	background: url(../images/icon_arrow_w.svg) right 30px center no-repeat #005f32;
+	&:hover {
+		color: #231815;
+		background: url(../images/icon_arrow.svg) right 22px center no-repeat #d7dc00;
+	}
+	
+	@include respond(sp){
+		background: url(../images/icon_arrow_w.svg) right 4vw center no-repeat #005f32;
+		
+		&:hover {
+			background: url(../images/icon_arrow.svg) right 3vw center no-repeat #d7dc00;
+		}
+	}
+}
+
+@mixin mainDisplay {
+	div {
+		margin-top: 32px;
+		width: 100%;
+		height: 550px;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	article {
+		position: relative;
+		width: 56.25%;
+		padding: 30px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		// align-items: flex-end;
+		background-color: #005f32;
+		border-radius: 0px 10px 10px 0px;
+		transform: translateY(-60px);
+		z-index: 5;
+		@include respond(sp) {
+			border-radius: 0;
+		}
+
+		p {
+			text-align: left;
+			padding-left: 15.55%;
+			font-family: YuGo-Medium-83pv-RKSJ-H;
+			font-size: 15px;
+			line-height: 26.25px;
+			color: #ffffff;
+		}
+	}
+	@include respond(sp){
+		div{
+			margin-top: 6.53vw;
+			height: 53.33vw;
+		}
+		article{
+			width: 100%;
+			padding:6vw 10%;
+			transform: unset;
+			p{
+				font-size: 3.8vw;
+				line-height: 6.6vw;
+				padding-left: unset;
+			}
+		}
+	}
+}
