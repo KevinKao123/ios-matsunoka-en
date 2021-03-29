@@ -16,10 +16,11 @@ $(window).on('scroll', function() {
     let bottomPos = $(document).height() - $(window).height();
     let nowPos = bottomPos - $(this).scrollTop();
     let stopPos = $('.footer').height();
-    console.log(bottomPos);
-    console.log(nowPos);
-    $(this).scrollTop() > 200 ? topBtn.fadeIn() : topBtn.fadeOut();
+	
+    // $(this).scrollTop() > 200 ? topBtn.fadeIn() : topBtn.fadeOut();
+	$(this).scrollTop() > 200 ? topBtn.addClass('toTopActive') : topBtn.removeClass('toTopActive');
     // nowPos <= stopPos ? topBtn.addClass('stop') : topBtn.removeClass('stop');
+	nowPos < stopPos ? topBtn.addClass('toTopRemoveFixed') : topBtn.removeClass('toTopRemoveFixed');
 });
 
 // animsion 

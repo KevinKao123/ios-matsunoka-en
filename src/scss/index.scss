@@ -13,7 +13,7 @@
 .page {
 	width: 100%;
 	min-height: 100vh;
-    user-select: none;
+	user-select: none;
 }
 .main {
 	width: 100%;
@@ -80,7 +80,7 @@
 					padding-top: 7.07vw;
 				}
 				.sp-menu {
-                    cursor: pointer;
+					cursor: pointer;
 					position: relative;
 					&-icon {
 						position: absolute;
@@ -102,13 +102,13 @@
 					.sp-menu-icon {
 						span {
 							&:nth-child(1) {
-								transform: rotate(45deg) translateY(300%) translateX(0.90vw);
+								transform: rotate(45deg) translateY(300%) translateX(0.9vw);
 							}
 							&:nth-child(2) {
 								opacity: 0;
 							}
 							&:nth-child(3) {
-								transform: rotate(-45deg) translateY(-300%) translateX(0.90vw);
+								transform: rotate(-45deg) translateY(-300%) translateX(0.9vw);
 							}
 						}
 					}
@@ -673,7 +673,7 @@
 				color: #000000;
 				margin-bottom: 25px;
 				transition: 0.3s ease-in-out;
-                cursor: pointer;
+				cursor: pointer;
 
 				p {
 					width: 130px;
@@ -1141,15 +1141,28 @@
 				}
 			}
 
+			// &::before {
+			// 	content: '';
+			// 	position: absolute;
+			// 	width: 175px;
+			// 	height: 175px;
+			// 	border-radius: 50%;
+			// 	border: 3.5px solid rgba($color: #dadada, $alpha: 0.5);
+			// 	left: 57px;
+			// 	top: -21px;
+			// }
 			&::before {
 				content: '';
+				background-image: url(../images/sec3_about_icon.png);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				width: 206px;
+				height: 180px;
+				opacity: 0.5;
 				position: absolute;
-				width: 175px;
-				height: 175px;
-				border-radius: 50%;
-				border: 3.5px solid rgba($color: #dadada, $alpha: 0.5);
 				left: 57px;
-				top: -21px;
+				top: -0px;
 			}
 			@include respond(sp) {
 				width: 80%;
@@ -1168,12 +1181,18 @@
 						line-height: 7vw;
 					}
 				}
+				// &::before {
+				// 	width: 52.27vw;
+				// 	height: 52.27vw;
+				// 	border: solid 1.03vw rgba($color: #d8d8d8, $alpha: 0.5);
+				// 	left: 3.33vw;
+				// 	top: -2.93vw;
+				// }
 				&::before {
 					width: 52.27vw;
-					height: 52.27vw;
-					border: solid 1.03vw rgba($color: #d8d8d8, $alpha: 0.5);
+					height: 45.67vw;
 					left: 3.33vw;
-					top: -2.93vw;
+					top: -0px;
 				}
 			}
 		}
@@ -1950,9 +1969,7 @@
 	&-toTop {
 		z-index: 10;
 		position: fixed;
-		// position: static;
-		// position: sticky;
-		right: 100px;
+		right: 50px;
 		bottom: 40px;
 		width: 80px;
 		height: 80px;
@@ -1963,14 +1980,14 @@
 		letter-spacing: 2px;
 		color: #ffffff;
 		background: url(../images/icon_toTop.svg) center top 20px no-repeat #4e4637;
-        transition: 0.3s ease-in-out;
+		transition: 0.3s ease-in-out;
 		display: none;
 
 		&:hover {
 			background: url(../images/icon_toTop.svg) center top 15px no-repeat #005f32;
 		}
-		@media only screen and (min-width: 1300px) {
-			right: 50px;
+		@media only screen and (min-width: 1450px) {
+			right: 100px;
 		}
 		@include respond(sp) {
 			right: 20px;
@@ -1981,10 +1998,18 @@
 		display: block;
 		animation: toTopActive 0.4s;
 	}
-    .stop {
-        position: absolute;
-        bottom: 380px;
-    }
+	.toTopRemoveFixed {
+		position: absolute;
+		right: 50px;
+		bottom: unset;
+		top: -80px;
+		@media only screen and (min-width: 1450px) {
+			right: 100px;
+		}
+		@include respond(sp) {
+			right: 20px;
+		}
+	}
 	@keyframes toTopActive {
 		from {
 			opacity: 0;
@@ -2084,18 +2109,20 @@
 	}
 }
 
-// 
+//
 .animsition {
-    opacity: 0;
+	opacity: 0;
 }
 .upview {
-    animation: showup 0.6s linear 0s 1 normal forwards;
+	animation: showup 0.6s linear 0s 1 normal forwards;
 }
 @keyframes showup {
-    0% {
-        opacity: 0; transform: translateY(20px);
-    }
-    100% {
-        opacity: 1; transform: translateY(0);
-    }
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
